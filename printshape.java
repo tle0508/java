@@ -69,21 +69,35 @@ class DiamondShape {
 
 }
 
-public class Main {
+public class printshape {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int n;
-        System.out.print("Enter number : ");
-        n = scanner.nextInt();
-        DiamondShape diamond = new DiamondShape(n);
-        if (n % 2 == 0) {
-
-            diamond.printButterfly();
-        } else {
-
-            diamond.printDiamond();
-
+        int n = 0;
+    
+        while (true) {
+            System.out.print("Enter number (or type 'exit' to quit): ");
+            String userInput = scanner.nextLine();
+            if (userInput.equals("exit")) {
+                System.out.println("Exiting the program.");
+                break;
+            }
+            try {
+                n = Integer.parseInt(userInput);
+                if (n > 50 || n <= 0) {
+                    System.out.println("Invalid input. Please enter number between 1-50");
+                } else {
+                    DiamondShape diamond = new DiamondShape(n);
+    
+                    if (n % 2 == 0) {
+                        diamond.printButterfly();
+                    } else {
+                        diamond.printDiamond();
+                    }
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number or type 'exit' to quit.");
+            }
         }
-
+        scanner.close();
     }
 }
