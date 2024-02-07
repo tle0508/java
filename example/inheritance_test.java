@@ -1,3 +1,5 @@
+package example;
+
 // คลาสแม่ (Base class)
 class Animal {
     private String name;

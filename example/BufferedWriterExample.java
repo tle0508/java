@@ -1,3 +1,5 @@
+package example;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,7 +8,7 @@ public class BufferedWriterExample {
 
     public static void main(String[] args) {
         // ระบุที่ตั้งของไฟล์ที่ต้องการเขียน
-        String filePath = "example.txt";
+        String filePath = "example/example.txt";
 
         try {
             // สร้าง FileWriter และ BufferedWriter

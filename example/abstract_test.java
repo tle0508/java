@@ -1,3 +1,5 @@
+package example;
+
 // Abstract class
 abstract class Shape {
     // Abstract methods
