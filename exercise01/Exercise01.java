@@ -30,7 +30,7 @@ public class Exercise01 {
                     }
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number or type 'exit' to quit.");
+                System.out.println("Invalid input. Please enter a valid number or type 'exit' to quit");
             }
         }
         scanner.close();
