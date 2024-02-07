@@ -1,33 +1,32 @@
 package exercise01;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
-public class DiamondShape {
-    private int num;
-    private final String SPACE = "  ";
-    private final String STAR = "+ ";
+public class DiamondShape implements Shape  {
+    private final int num;
     public DiamondShape(int num) {
         this.num = num;
     }
-    public void printDiamond() {
-        Stack<String> stack = new Stack<String>();
+    @Override
+    public List<String> printshape() {
+        Stack<String> stack = new Stack<>();
+        List<String> result = new ArrayList<>();
         int mid = num / 2;
-
-        for (int i = 0; i <= mid; i++) {
-            String spaces =SPACE.repeat(mid - i);
-            String stars = STAR.repeat(2 * i + 1);
-            stack.push(spaces + stars);
+        //ข้างบน
+        for (int i = 0; i < mid; i++) {
+            String space = SPACE.repeat(mid - i);
+            String star = STAR.repeat(2 * i + 1);
+            result.add(stack.push(space + star));
         }
-
-        for (int i = mid - 1; i >= 0; i--){
-            String spaces =SPACE.repeat(mid - i);
-            String stars = STAR.repeat(2 * i + 1);
-            stack.push(spaces + stars);
-        }
-
+        //กลาง
+        result.add(STAR.repeat(num));
+        //ล่าง
         while (!stack.isEmpty()) {
-            System.out.println(stack.pop());
+            result.add(stack.pop());
         }
+        return result;
     }
 
 }

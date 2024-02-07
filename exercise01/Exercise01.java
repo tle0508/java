@@ -1,10 +1,11 @@
 package exercise01;
+
+import java.util.List;
 import java.util.Scanner;
-public class Printshape {
+
+public class Exercise01 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int num = 0;
-
         while (true) {
             System.out.print("Enter number (or type 'exit' to quit): ");
             String userInput = scanner.nextLine();
@@ -13,16 +14,19 @@ public class Printshape {
                 break;
             }
             try {
-                num = Integer.parseInt(userInput);
+                int num = Integer.parseInt(userInput);
                 if (num > 50 || num <= 0) {
                     System.out.println("Invalid input. Please enter number between 1-50");
                 } else {
-                    DiamondShape diamond = new DiamondShape(num);
-                    ButterflyShape butterfly = new ButterflyShape(num);
+                    Shape shape;
                     if (num % 2 == 0) {
-                        butterfly.printButterfly();
+                        shape = new ButterflyShape(num);
                     } else {
-                        diamond.printDiamond();
+                        shape = new DiamondShape(num);
+                    }
+                    List<String> shapeList = shape.printshape();
+                    for (String line : shapeList) {
+                        System.out.println(line);
                     }
                 }
             } catch (NumberFormatException e) {

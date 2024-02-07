@@ -1,45 +1,31 @@
 package exercise01;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
-public class ButterflyShape {
-    private int num;
+public class ButterflyShape implements Shape {
+    private final int num;
 
     public ButterflyShape(int num) {
         this.num = num;
     }
-
-    public void printButterfly() {
+    @Override
+    public List<String> printshape() {
         Stack<String> stack = new Stack<String>();
-
-
+        List<String> result = new ArrayList<>();
+        //บน
         for (int i = 1; i < num; i++) {
-            String stars1 = "+ ".repeat(i);
-            String spaces1 = "  ".repeat(num - i);
-            String middle =  "  ";
-            String spaces2 = "  ".repeat(num - i);
-            String stars2 = "+ ".repeat(i);
-            stack.push(stars1 +middle + spaces1 + spaces2 + stars2);
+            String star = STAR.repeat(i);
+            String space = SPACE.repeat(((2*num)-(2*i))+1);
+            result.add(stack.push(star + space + star ));
         }
-
-
-        for (int i = 1; i <= num; i++) {
-            String stars1 = "+ ".repeat(num - i + 1);
-            String middle;
-            if(i == 1){
-                middle="- ";
-            }else{
-                middle="  ";
-            }
-            String spaces1 = "  ".repeat(i - 1);
-            String spaces2 = "  ".repeat(i - 1);
-            String stars2 = "+ ".repeat(num - i + 1);
-            stack.push(stars1 + middle + spaces1 + spaces2 + stars2);
-        }
-
-
+        //กลาง
+        result.add(STAR.repeat(num) + "-" +STAR.repeat(num));
+        //ล่าง
         while (!stack.isEmpty()) {
-            System.out.println(stack.pop());
+            result.add(stack.pop());
         }
+        return result;
     }
 }
